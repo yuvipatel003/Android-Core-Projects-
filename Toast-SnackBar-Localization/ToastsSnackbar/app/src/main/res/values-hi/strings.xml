@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ToastsSnackbar</string>
+    <string name = "str_default_toast">यह डिफ़ॉल्ट टोस्ट है</string>
+    <string name = "str_default_snackbar">यह डिफ़ॉल्ट स्नैकबार है</string>
+    <string name = "str_custom_toast">यह एक कस्टम टोस्ट है</string>
+    <string name = "str_custom_snackbar">यह एक कस्टम स्नैकबार है</string>
+    <string name="str_english">अंग्रेज़ी</string>
+    <string name="str_french">फ्रेंच</string>
+    <string name="str_hindi">हिन्दी</string>
+    <string name="str_snackbar_status">स्नैकबार स्थिति</string>
+    <string name="str_snackbar_custom">स्नैकबार कस्टम</string>
+    <string name="str_snackbar_default">स्नैकबार डिफ़ॉल्ट</string>
+    <string name="str_toast_custom">टोस्ट कस्टम</string>
+    <string name="str_toast_default">टोस्ट डिफ़ॉल्ट</string>
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ToastsSnackbar</string>
+    <string name = "str_default_toast">Ceci est un toast par défaut</string>
+    <string name = "str_default_snackbar">Ceci est le snack-bar par défaut</string>
+    <string name = "str_custom_toast">Ceci est un toast personnalisé</string>
+    <string name = "str_custom_snackbar">Ceci est un snack-bar personnalisé</string>
+    <string name="str_english">Anglaise</string>
+    <string name="str_french">Française</string>
+    <string name="str_hindi">Hindi</string>
+    <string name="str_snackbar_status">Statut Snackbar</string>
+    <string name="str_snackbar_custom">Snackbar Custom</string>
+    <string name="str_snackbar_default">Snackbar Default</string>
+    <string name="str_toast_custom">Toast personnalisé</string>
+    <string name="str_toast_default">Toast par défaut</string>
+</resources>

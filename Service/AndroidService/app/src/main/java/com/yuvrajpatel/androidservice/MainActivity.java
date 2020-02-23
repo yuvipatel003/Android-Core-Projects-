@@ -34,10 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(id){
             case R.id.btnStartService:
                     if(!isMyServiceRunning(MyService.class)){
-
-                        if(bindService(new Intent(this, MyService.class),,0)){
-                            Toast.makeText(this,"Service Binded",Toast.LENGTH_SHORT).show();
-                        }
                         startService(new Intent(this, MyService.class));
                         Toast.makeText(this,"Service Started",Toast.LENGTH_SHORT).show();
                     }else {

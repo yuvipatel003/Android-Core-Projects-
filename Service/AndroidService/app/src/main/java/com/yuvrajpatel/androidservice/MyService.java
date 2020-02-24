@@ -4,14 +4,11 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.IBinder;
-import android.provider.Settings;
-
-import java.security.Provider;
-
 import androidx.annotation.Nullable;
 
 public class MyService extends Service {
 
+    // Media player object to play song on service start
     private MediaPlayer mMediaPlayer;
 
     @Nullable
@@ -22,12 +19,12 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        //getting systems default ringtone
+        //getting song from resource
         mMediaPlayer = MediaPlayer.create(this,
                 R.raw.song);
-        //Settings.System.DEFAULT_RINGTONE_URI
+
         //setting loop play to true
-        //this will make the ringtone continuously playing
+        //this will make the song continuously playing
         mMediaPlayer.setLooping(true);
 
         //staring the player

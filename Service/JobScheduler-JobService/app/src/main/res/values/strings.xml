@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JobSchedulerJobService</string>
+    <string name="str_start_jobscheduler_service">Start JobScheduler Service</string>
+    <string name="str_stop_jobscheduler_service">Stop JobScheduler Service</string>
 </resources>

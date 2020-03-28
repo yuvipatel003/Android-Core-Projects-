@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Notification</string>
+    <string name="app_name">My Notification</string>
+
+    <!-- Layout String resource -->
+    <string name="str_send_notification">Send Notification</string>
+
+    <!-- Notification String resource -->
+    <string name="str_my_notification_channel">My Notification channel</string>
+    <string name="str_notification_title">Notification Received</string>
+    <string name="str_notification_text">BRAVO, Notification from My Notification sent successfully</string>
 </resources>

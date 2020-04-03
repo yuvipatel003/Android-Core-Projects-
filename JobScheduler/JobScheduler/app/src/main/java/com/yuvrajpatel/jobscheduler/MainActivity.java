@@ -73,11 +73,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceName);
         builder.setRequiredNetworkType(selectedNetworkOption);
 
-        JobInfo myJobInfo = builder.build();
-        mScheduler.schedule(myJobInfo);
+        Boolean constraintSet = selectedNetworkOption != JobInfo.NETWORK_TYPE_NONE;
 
-        Toast.makeText(this, "Job Scheduled, job will run when " +
-                "the constraints are met.", Toast.LENGTH_SHORT).show();
+        if(constraintSet) {
+            //Schedule the job and notify the user
+            JobInfo myJobInfo = builder.build();
+            mScheduler.schedule(myJobInfo);
+            Toast.makeText(this, "Job Scheduled, job will run when " +
+                    "the constraints are met.", Toast.LENGTH_SHORT).show();
+        }else {
+            Toast.makeText(this, "Please set at least one constraint",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void cancelJob(){

@@ -87,6 +87,24 @@
             android:textSize="@dimen/textsize_medium"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_seekbar_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/str_schedule_job_by"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:textSize="@dimen/textsize_large"
+        />
+
+    <SeekBar
+        android:id="@+id/seekbar_delay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small"
+        />
+
     <Button
         android:id="@+id/btn_schedule_job"
         android:layout_width="match_parent"

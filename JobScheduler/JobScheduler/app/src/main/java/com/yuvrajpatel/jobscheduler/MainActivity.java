@@ -1,6 +1,7 @@
 package com.yuvrajpatel.jobscheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -16,6 +19,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button mBtnScheduleJob, mBtnCancelJob;
     private JobScheduler mScheduler;
     private static final int JOB_ID = 0;
+    //Switches for setting job options
+    private SwitchCompat mDeviceIdleSwitch;
+    private SwitchCompat mDeviceChargingSwitch;
+    private SeekBar mSeekBarDelay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBtnCancelJob.setOnClickListener(this);
 
         mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+
+        mDeviceIdleSwitch = findViewById(R.id.switch_device_idle);
+        mDeviceChargingSwitch = findViewById(R.id.switch_device_charging);
+
+        mSeekBarDelay = findViewById(R.id.seekbar_delay);
+        mSeekBarDelay.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                TextView seekBarTitle = findViewById(R.id.txt_seekbar_title);
+                if(i > 0) {
+                    seekBarTitle.setText(getResources().getString(R.string.str_schedule_job_by) + " " + String.valueOf(i/2) + "seconds");
+                } else {
+                    seekBarTitle.setText(getResources().getString(R.string.str_schedule_job_by) + " " + "Not Set");
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
     }
 
@@ -54,6 +87,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         RadioGroup networkOptions = findViewById(R.id.radiogroup_network);
         int selectedNetworkID = networkOptions.getCheckedRadioButtonId();
         int selectedNetworkOption = JobInfo.NETWORK_TYPE_NONE;
+        int seekBarInteger = mSeekBarDelay.getProgress() / 2;
+        boolean isSeekBarSet = seekBarInteger > 0;
 
         switch(selectedNetworkID){
             case R.id.radio_network_none:
@@ -72,8 +107,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         JobInfo.Builder builder = new JobInfo.Builder(JOB_ID, serviceName);
         builder.setRequiredNetworkType(selectedNetworkOption);
+        builder.setRequiresDeviceIdle(mDeviceIdleSwitch.isChecked());
+        builder.setRequiresCharging(mDeviceChargingSwitch.isChecked());
 
-        Boolean constraintSet = selectedNetworkOption != JobInfo.NETWORK_TYPE_NONE;
+        if (isSeekBarSet) {
+            builder.setOverrideDeadline(seekBarInteger * 1000);
+        }
+
+        boolean constraintSet = (selectedNetworkOption != JobInfo.NETWORK_TYPE_NONE)
+                && mDeviceChargingSwitch.isChecked() && mDeviceIdleSwitch.isChecked() && isSeekBarSet;
 
         if(constraintSet) {
             //Schedule the job and notify the user
@@ -81,8 +123,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mScheduler.schedule(myJobInfo);
             Toast.makeText(this, "Job Scheduled, job will run when " +
                     "the constraints are met.", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(this, "Please set at least one constraint",
+        } else {
+            Toast.makeText(this, "Please set all constraint",
                     Toast.LENGTH_SHORT).show();
         }
     }

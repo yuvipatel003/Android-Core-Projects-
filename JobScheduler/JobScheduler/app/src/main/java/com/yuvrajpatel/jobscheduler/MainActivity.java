@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button mBtnScheduleJob, mBtnCancelJob;
-    private JobScheduler mScheduler;
+    Button mBtnScheduleJob, mBtnCancelJob, mBtnScheduleJobAsyncTask;
+    private JobScheduler mScheduler, mAsyncScheduler;
     private static final int JOB_ID = 0;
     //Switches for setting job options
     private SwitchCompat mDeviceIdleSwitch;
@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mBtnScheduleJob = findViewById(R.id.btn_schedule_job);
+        mBtnScheduleJobAsyncTask = findViewById(R.id.btn_schedule_job_asynctask);
         mBtnCancelJob = findViewById(R.id.btn_cancel_job);
 
         mBtnScheduleJob.setOnClickListener(this);
+        mBtnScheduleJobAsyncTask.setOnClickListener(this);
         mBtnCancelJob.setOnClickListener(this);
-
-        mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
 
         mDeviceIdleSwitch = findViewById(R.id.switch_device_idle);
         mDeviceChargingSwitch = findViewById(R.id.switch_device_charging);
@@ -74,6 +74,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 scheduleJob();
                 break;
 
+            case R.id.btn_schedule_job_asynctask:
+                scheduleJobAsyncTask();
+                break;
+
             case R.id.btn_cancel_job:
                 cancelJob();
                 break;
@@ -102,6 +106,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
+        mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+
         ComponentName serviceName = new ComponentName(getPackageName(),
                 NotificationJobService.class.getName());
 
@@ -129,11 +135,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
+    public void scheduleJobAsyncTask() {
+
+        mAsyncScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
+
+        ComponentName serviceName = new ComponentName(getPackageName(),
+                AsyncTaskJobScheduler.class.getName());
+
+        JobInfo.Builder builder = new JobInfo.Builder(1, serviceName);
+        builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
+        builder.setRequiresDeviceIdle(mDeviceIdleSwitch.isChecked());
+        builder.setRequiresCharging(mDeviceChargingSwitch.isChecked());
+        builder.setPeriodic(15 * 60 * 1000);
+            //Schedule the job and notify the user
+        JobInfo myJobInfo = builder.build();
+        mAsyncScheduler.schedule(myJobInfo);
+        Toast.makeText(this, "AsyncTask JobScheduled", Toast.LENGTH_SHORT).show();
+    }
+
+
+
     public void cancelJob(){
         if (mScheduler!=null){
             mScheduler.cancelAll();
             mScheduler = null;
             Toast.makeText(this, "Jobs cancelled", Toast.LENGTH_SHORT).show();
+        } else if (mAsyncScheduler!=null){
+            mAsyncScheduler.cancelAll();
+            mAsyncScheduler = null;
+            Toast.makeText(this, "AsyncScheduler Jobs cancelled", Toast.LENGTH_SHORT).show();
         }
     }
 

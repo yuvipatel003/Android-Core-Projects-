@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">NotificationScheduler</string>
+    <string name="str_schedule_job_by">Schedule Job by:</string>
+    <string name="str_network_type">Network Type</string>
+    <string name="str_none">None</string>
+    <string name="str_any_network">Any Network</string>
+    <string name="str_wifi">Wifi</string>
+    <string name="str_requires">Requires:</string>
+    <string name="str_device_idle">Device Idle</string>
+    <string name="str_device_charging">Device Charging</string>
+    <string name="str_schedule_job">Schedule Job</string>
+    <string name="str_schedule_job_asynctask">Schedule Job AsyncTask</string>
+    <string name="str_cancel_jobs">Cancel Jobs</string>
 </resources>

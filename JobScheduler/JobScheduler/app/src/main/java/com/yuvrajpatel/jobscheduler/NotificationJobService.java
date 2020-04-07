@@ -50,7 +50,7 @@ public class NotificationJobService extends JobService {
     public boolean onStopJob(JobParameters jobParameters) {
         return true;
     }
-
+    
     /**
      * Creates a Notification channel, for OREO and higher.
      */
@@ -76,4 +76,5 @@ public class NotificationJobService extends JobService {
             mNotifyManager.createNotificationChannel(notificationChannel);
         }
     }
+
 }

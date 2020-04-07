@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button mBtnScheduleJob, mBtnCancelJob, mBtnScheduleJobAsyncTask;
     private JobScheduler mScheduler, mAsyncScheduler;
     private static final int JOB_ID = 0;
+    private static final int ASYNC_JOB_ID = 1;
     //Switches for setting job options
     private SwitchCompat mDeviceIdleSwitch;
     private SwitchCompat mDeviceChargingSwitch;
@@ -87,6 +88,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    /**
+     * Schedule job to send notification
+     */
     public void scheduleJob() {
         RadioGroup networkOptions = findViewById(R.id.radiogroup_network);
         int selectedNetworkID = networkOptions.getCheckedRadioButtonId();
@@ -135,7 +139,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
+    /**
+     * Schedule async task which will notify when finished.
+     * And it will execute after 10 seconds if not cancelled before 10 sec.
+     */
     public void scheduleJobAsyncTask() {
 
         mAsyncScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
@@ -143,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ComponentName serviceName = new ComponentName(getPackageName(),
                 AsyncTaskJobScheduler.class.getName());
 
-        JobInfo.Builder builder = new JobInfo.Builder(1, serviceName);
+        JobInfo.Builder builder = new JobInfo.Builder(ASYNC_JOB_ID, serviceName);
         builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY);
         builder.setRequiresDeviceIdle(mDeviceIdleSwitch.isChecked());
         builder.setRequiresCharging(mDeviceChargingSwitch.isChecked());
@@ -155,7 +162,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
+    /**
+     * Cancel both Scheduled jobs
+     */
     public void cancelJob(){
         if (mScheduler!=null){
             mScheduler.cancelAll();

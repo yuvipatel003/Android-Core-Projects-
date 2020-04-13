@@ -8,4 +8,26 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ScoreButtons" parent="AppTheme">
+        <item name="android:background">@drawable/image_background</item>
+        <item name="android:tint">@color/colorPrimary</item>
+    </style>
+
+    <style name="PlusButtons" parent="ScoreButtons">
+        <item name="android:src">@drawable/ic_plus</item>
+    </style>
+
+    <style name="MinusButtons" parent="ScoreButtons">
+        <item name="android:src">@drawable/ic_minus</item>
+    </style>
+
+    <style name="ScoreText">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Display3</item>
+    </style>
+
+    <style name="TeamText">
+        <item name=
+            "android:textAppearance">@style/TextAppearance.AppCompat.Display1
+        </item>
+    </style>
 </resources>

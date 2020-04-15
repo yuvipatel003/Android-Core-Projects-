@@ -3,4 +3,6 @@
     <string name="str_team_one">Team One</string>
     <string name="str_team_two">Team Two</string>
     <string name="str_initial_score">0</string>
+    <string name="str_night_mode">Night Mode</string>
+    <string name="str_day_mode">Day Mode</string>
 </resources>

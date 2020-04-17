@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private int mTeamOneScore;
     private int mTeamTwoScore;
     private TextView mTextViewScoreTeamOne, mTextViewScoreTeamTwo;
+    static final String STATE_SCORE_TEAM_1 = "Team 1 Score";
+    static final String STATE_SCORE_TEAM_2 = "Team 2 Score";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
         mTextViewScoreTeamOne = findViewById(R.id.txt_score_one);
         mTextViewScoreTeamTwo = findViewById(R.id.txt_score_two);
+
+        if (savedInstanceState != null) {
+            mTeamOneScore = savedInstanceState.getInt(STATE_SCORE_TEAM_1);
+            mTeamTwoScore = savedInstanceState.getInt(STATE_SCORE_TEAM_2);
+
+            //Set the score text views
+            mTextViewScoreTeamOne.setText(String.valueOf(mTeamOneScore));
+            mTextViewScoreTeamTwo.setText(String.valueOf(mTeamTwoScore));
+        }
     }
 
     @Override
@@ -99,5 +110,13 @@ public class MainActivity extends AppCompatActivity {
                 mTeamTwoScore++;
                 mTextViewScoreTeamTwo.setText(String.valueOf(mTeamTwoScore));
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // Save the scores.
+        outState.putInt(STATE_SCORE_TEAM_1, mTeamOneScore);
+        outState.putInt(STATE_SCORE_TEAM_2, mTeamTwoScore);
+        super.onSaveInstanceState(outState);
     }
 }

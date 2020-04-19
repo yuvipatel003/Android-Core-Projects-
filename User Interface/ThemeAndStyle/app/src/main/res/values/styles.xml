@@ -11,14 +11,17 @@
     <style name="ScoreButtons" parent="AppTheme">
         <item name="android:background">@drawable/image_background</item>
         <item name="android:tint">@color/colorPrimary</item>
+        <item name="android:state_pressed">true</item>
     </style>
 
     <style name="PlusButtons" parent="ScoreButtons">
         <item name="android:src">@drawable/ic_plus</item>
+        <item name="android:state_pressed">true</item>
     </style>
 
     <style name="MinusButtons" parent="ScoreButtons">
         <item name="android:src">@drawable/ic_minus</item>
+        <item name="android:state_pressed">true</item>
     </style>
 
     <style name="ScoreText">

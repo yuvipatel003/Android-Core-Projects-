@@ -31,7 +31,7 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_minus"
             android:onClick="decreaseScore"
-            android:background="@drawable/image_background"
+            android:background="@drawable/button_selector"
             style="@style/MinusButtons"/>
 
         <TextView
@@ -52,7 +52,7 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_plus"
             android:onClick="increaseScore"
-            android:background="@drawable/image_background"
+            android:background="@drawable/button_selector"
             style="@style/PlusButtons"/>
 
     </RelativeLayout>
@@ -79,7 +79,7 @@
         android:layout_centerVertical="true"
         android:src="@drawable/ic_minus"
         android:onClick="decreaseScore"
-        android:background="@drawable/image_background"
+        android:background="@drawable/button_selector"
         style="@style/MinusButtons"/>
 
     <TextView
@@ -100,7 +100,7 @@
         android:layout_centerVertical="true"
         android:src="@drawable/ic_plus"
         android:onClick="increaseScore"
-        android:background="@drawable/image_background"
+        android:background="@drawable/button_selector"
         style="@style/PlusButtons"/>
 
     </RelativeLayout>

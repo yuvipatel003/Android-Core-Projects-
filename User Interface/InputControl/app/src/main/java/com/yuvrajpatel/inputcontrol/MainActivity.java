@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Opening external app
+     */
     private void dialNumber() {
         // Find the editTextPhoneNumber view.
         EditText editTextPhoneNumber = findViewById(R.id.editTextPhoneNumber);

@@ -61,4 +61,17 @@ public class MainActivity extends AppCompatActivity {
             Log.d("ImplicitIntents", "Can't handle this!");
         }
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_POWER) {
+            // this is method which detect press even of button
+            // event.startTracking(); // Needed to track long presses
+            Log.d(TAG, "Power button long click");
+//            mInactivityHandler.removeCallbacks(mInactivityHandler.mInactivityTimeoutRunnable);
+//            mInactivityHandler.postDelayed(mInactivityHandler.mInactivityTimeoutRunnable,0);
+ //           return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

@@ -115,7 +115,32 @@ public class MainActivity extends AppCompatActivity {
             notifyBuilder.addAction(R.drawable.ic_update, "Update Notification", updatePendingIntent);
             notifyBuilder.setDeleteIntent(deletePendingIntent);
             notifyBuilder.setContentIntent(clickActionPendingIntent);
+           // mNotificationManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+
+
+            // Notification with progressbar
+            int PROGRESS_MAX = 100;
+            int PROGRESS_CURRENT = 0;
+            notifyBuilder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
             mNotificationManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+
+            do{
+                PROGRESS_CURRENT = PROGRESS_CURRENT + 10;
+                notifyBuilder.setProgress(PROGRESS_MAX, PROGRESS_CURRENT, false);
+                mNotificationManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            } while(PROGRESS_CURRENT < 100);
+
+            notifyBuilder.setContentText("Download complete")
+                    .setProgress(0,0,false);
+            mNotificationManager.notify(NOTIFICATION_ID, notifyBuilder.build());
+
+
+
 
             setNotificationButtonState(false, true, true);
             Log.d(TAG,"Notification sent successfully");

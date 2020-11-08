@@ -1,4 +1,4 @@
-package com.anushka.didemo
+package com.yuvrajpatel.didemo.model
 
 import android.util.Log
 

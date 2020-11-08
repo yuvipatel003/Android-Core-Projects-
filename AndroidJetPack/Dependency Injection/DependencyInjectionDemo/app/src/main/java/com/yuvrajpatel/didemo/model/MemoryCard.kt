@@ -1,14 +1,9 @@
-package com.anushka.didemo
+package com.yuvrajpatel.didemo.model
 
 import android.util.Log
 import javax.inject.Inject
 
-class MemoryCard @Inject constructor(){
-    init {
-        Log.i("DIDEMO","Memory Card Constructed")
-    }
+interface MemoryCard {
 
-    fun getSpaceAvailablity(){
-        Log.i("DIDEMO","Memory space available")
-    }
+    fun getSpaceAvailablity()
 }

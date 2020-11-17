@@ -7,7 +7,7 @@ import com.yuvrajpatel.tmdbdashboard.domain.usecase.movie.UpdateMoviesUseCase
 import com.yuvrajpatel.tmdbdashboard.domain.usecase.tvshow.GetTvShowUseCase
 import com.yuvrajpatel.tmdbdashboard.domain.usecase.tvshow.UpdateTvShowUseCase
 
-class TvShowActivityViewModel(
+class TvShowViewModel(
     private val getTvShowUseCase: GetTvShowUseCase,
     private val updateTvShowUseCase: UpdateTvShowUseCase
 ) : ViewModel() {

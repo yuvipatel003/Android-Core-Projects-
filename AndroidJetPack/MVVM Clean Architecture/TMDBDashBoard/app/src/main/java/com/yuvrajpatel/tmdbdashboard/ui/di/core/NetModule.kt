@@ -1,4 +1,4 @@
-package com.yuvrajpatel.tmdbdashboard.ui.di
+package com.yuvrajpatel.tmdbdashboard.ui.di.core
 
 import com.yuvrajpatel.tmdbdashboard.data.api.TMDBService
 import dagger.Module

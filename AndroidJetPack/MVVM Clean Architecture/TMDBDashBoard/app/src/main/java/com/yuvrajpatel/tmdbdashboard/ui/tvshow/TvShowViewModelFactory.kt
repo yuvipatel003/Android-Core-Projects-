@@ -6,14 +6,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.yuvrajpatel.tmdbdashboard.domain.usecase.tvshow.GetTvShowUseCase
 import com.yuvrajpatel.tmdbdashboard.domain.usecase.tvshow.UpdateTvShowUseCase
 
-class TvShowActivityViewModelFactory(
+class TvShowViewModelFactory(
     private val getTvShowUseCase: GetTvShowUseCase,
     private val updateTvShowUseCase: UpdateTvShowUseCase
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return TvShowActivityViewModel(
+        return TvShowViewModel(
             getTvShowUseCase,
             updateTvShowUseCase
-        )::class.java as T
+        ) as T
     }
 }

@@ -5,14 +5,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.yuvrajpatel.tmdbdashboard.domain.usecase.movie.GetMoviesUseCase
 import com.yuvrajpatel.tmdbdashboard.domain.usecase.movie.UpdateMoviesUseCase
 
-class MovieActivityViewModelFactory(
+class MovieViewModelFactory(
     private val getMoviesUseCase: GetMoviesUseCase,
     private val updateMoviesUseCase: UpdateMoviesUseCase
 ) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return MovieActivityViewModel(
+        return MovieViewModel(
             getMoviesUseCase,
             updateMoviesUseCase
-        )::class.java as T
+        ) as T
     }
 }

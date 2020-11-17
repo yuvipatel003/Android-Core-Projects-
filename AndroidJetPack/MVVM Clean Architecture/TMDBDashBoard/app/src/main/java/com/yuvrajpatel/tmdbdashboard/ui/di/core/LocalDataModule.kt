@@ -1,4 +1,4 @@
-package com.yuvrajpatel.tmdbdashboard.ui.di
+package com.yuvrajpatel.tmdbdashboard.ui.di.core
 
 import com.yuvrajpatel.tmdbdashboard.data.dao.ActorDao
 import com.yuvrajpatel.tmdbdashboard.data.dao.MovieDao
@@ -14,7 +14,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class LocalDataModule() {
+class LocalDataModule {
 
     @Singleton
     @Provides

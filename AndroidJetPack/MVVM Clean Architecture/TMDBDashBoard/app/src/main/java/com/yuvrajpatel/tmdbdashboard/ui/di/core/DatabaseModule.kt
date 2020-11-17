@@ -1,4 +1,4 @@
-package com.yuvrajpatel.tmdbdashboard.ui.di
+package com.yuvrajpatel.tmdbdashboard.ui.di.core
 
 import android.content.Context
 import androidx.room.Room
@@ -15,7 +15,7 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideDataBase(context: Context) : TMDBDatabase {
+    fun provideMovieDataBase(context: Context) : TMDBDatabase {
         return Room.databaseBuilder(context,TMDBDatabase::class.java,"tmdb_database").build()
     }
 

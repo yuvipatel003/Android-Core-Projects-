@@ -5,7 +5,7 @@ import androidx.lifecycle.liveData
 import com.yuvrajpatel.tmdbdashboard.domain.usecase.movie.GetMoviesUseCase
 import com.yuvrajpatel.tmdbdashboard.domain.usecase.movie.UpdateMoviesUseCase
 
-class MovieActivityViewModel(
+class MovieViewModel(
     private val getMoviesUseCase: GetMoviesUseCase,
     private val updateMoviesUseCase: UpdateMoviesUseCase
 ) : ViewModel() {

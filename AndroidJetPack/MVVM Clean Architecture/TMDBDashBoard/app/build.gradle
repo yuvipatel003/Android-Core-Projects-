@@ -16,6 +16,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String","API_KEY","\"ccc76dd60048cb5ce46ecc1a96d5af6b\""
+        buildConfigField "String","BASE_URL","\"https://api.themoviedb.org/3/\""
     }
 
     buildTypes {
@@ -28,14 +29,16 @@ android {
     buildFeatures {
         dataBinding true
     }
+
 }
 
 dependencies {
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     def lifecycle_version = "2.2.0"
     def arch_version = "2.1.0"
     def room_version = "2.2.5"
     def coroutine_version = "1.4.1"
-    def dagger_version = "2.29.1"
+    def dagger_version = "2.28.1"
     def retrofit_version = "2.9.0"
     def okhttp_logging_interceptor_version = "4.9.0"
     def glide_version = "4.11.0"
@@ -71,6 +74,18 @@ dependencies {
     // Dagger
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+//    implementation "com.google.dagger:dagger:$dagger_version"
+//    implementation "com.google.dagger:dagger-android:$dagger_version"
+//    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+//    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+//    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+
+//    implementation "com.google.dagger:dagger:2.29.1"
+//    implementation "com.google.dagger:dagger-android:2.29.1"
+//    implementation "com.google.dagger:dagger-android-support:2.29.1"
+//    kapt "com.google.dagger:dagger-compiler:2.29.1"
+//    kapt "com.google.dagger:dagger-android-processor:2.29.1"
 
     // Retrofit, GSON Converter, Okhttp logging interceptor
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -79,5 +94,8 @@ dependencies {
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    //CardView
+    implementation "androidx.cardview:cardview:1.0.0"
 
 }

@@ -1,8 +1,8 @@
 package com.yuvrajpatel.tmdbdashboard.data.model.actor
 
+import com.google.gson.annotations.SerializedName
+
 data class ActorList(
-    val page: Int,
-    val actors: List<Actor>,
-    val total_pages: Int,
-    val total_results: Int
+    @SerializedName("results")
+    val actors: List<Actor>
 )

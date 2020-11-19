@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="myUserViewModel"
+            type="com.yuvrajpatel.roomdemo.UserViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp">
+
+    <EditText
+        android:id="@+id/editText_userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:text="@={myUserViewModel.inputName}"/>
+
+    <EditText
+        android:id="@+id/editText_userEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText_userName"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        android:text="@={myUserViewModel.inputEmail}"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText_userEmail"
+        app:layout_constraintRight_toRightOf="parent"
+        android:orientation="horizontal">
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@={myUserViewModel.btnTextSaveOrUpdate}"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        android:layout_weight="1"
+        android:onClick="@{()-> myUserViewModel.saveOrUpdate()}"/>
+
+    <Button
+        android:id="@+id/button_clearAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@={myUserViewModel.btnTextDeleteOrClearAll}"
+        android:textSize="16sp"
+        android:layout_weight="1"
+        android:onClick="@{()-> myUserViewModel.deleteOrClearAll()}"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView_usersList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout_buttonContainer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="8dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

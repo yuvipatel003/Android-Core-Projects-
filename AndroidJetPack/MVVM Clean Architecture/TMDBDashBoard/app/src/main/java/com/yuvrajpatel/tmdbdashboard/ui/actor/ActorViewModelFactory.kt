@@ -13,6 +13,6 @@ class ActorViewModelFactory(
         return ActorViewModel(
             getActorUseCase,
             updateActorUseCase
-        )::class.java as T
+        ) as T
     }
 }

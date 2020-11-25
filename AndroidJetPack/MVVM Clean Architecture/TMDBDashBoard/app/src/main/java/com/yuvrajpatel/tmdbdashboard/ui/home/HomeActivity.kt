@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.yuvrajpatel.tmdbdashboard.R
 import com.yuvrajpatel.tmdbdashboard.databinding.ActivityHomeBinding
+import com.yuvrajpatel.tmdbdashboard.ui.actor.ActorActivity
 import com.yuvrajpatel.tmdbdashboard.ui.movie.MovieActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -17,15 +18,15 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-//        mModel = ViewModelProvider(this).get(HomeActivityViewModel::class.java)
-//        mModel.setContext(this)
-
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-//        mBinding.homeViewModel = mModel
-//        mBinding.lifecycleOwner = this
 
         mBinding.btnMovies.setOnClickListener {
             val intent = Intent(this, MovieActivity::class.java)
+            startActivity(intent)
+        }
+
+        mBinding.btnActor.setOnClickListener {
+            val intent = Intent(this, ActorActivity::class.java)
             startActivity(intent)
         }
 

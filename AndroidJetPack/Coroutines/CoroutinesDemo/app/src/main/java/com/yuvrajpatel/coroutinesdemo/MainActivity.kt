@@ -2,6 +2,7 @@ package com.yuvrajpatel.coroutinesdemo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.UserManager
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
@@ -16,7 +17,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btnCount.setOnClickListener {
-            tvCount.text = count++.toString()
+          //  tvCount.text = count++.toString()
+            CoroutineScope(Dispatchers.Main).launch {
+                tvUserMessage.text = UserManger().getUserCount().toString()
+            }
         }
         btnDownloadUserData.setOnClickListener {
             CoroutineScope(Dispatchers.Main).launch {
